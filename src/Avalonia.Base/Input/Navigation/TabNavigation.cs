@@ -647,7 +647,7 @@ namespace Avalonia.Input.Navigation
         private static bool IsTabStop(IInputElement e)
         {
             if (e is InputElement ie)
-                return ie.Focusable && KeyboardNavigation.GetIsTabStop(ie) && ie.IsVisible && ie.IsEnabled;
+                return ie.CanFocus() && KeyboardNavigation.GetIsTabStop(ie);
             return false;
         }
 

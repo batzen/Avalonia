@@ -10,6 +10,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
 using Avalonia.Data;
 using Avalonia.Input;
+using Avalonia.Input.Navigation;
 using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.LogicalTree;
@@ -778,8 +779,7 @@ namespace Avalonia.Controls
                     return null;
                 }
 
-                if (result.Focusable &&
-                    result.IsEffectivelyEnabled &&
+                if (result.CanFocus() &&
                     result.IsEffectivelyVisible)
                 {
                     return result;

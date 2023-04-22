@@ -6,6 +6,7 @@ using Avalonia.Controls.Diagnostics;
 using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives.PopupPositioning;
 using Avalonia.Input;
+using Avalonia.Input.Navigation;
 using Avalonia.Input.Raw;
 using Avalonia.Input.TextInput;
 using Avalonia.Layout;
@@ -737,7 +738,7 @@ namespace Avalonia.Controls.Primitives
                 {
                     var e = (Control?)PlacementTarget;
 
-                    while (e is object && (!e.Focusable || !e.IsEffectivelyEnabled || !e.IsVisible))
+                    while (e is object && !e.CanFocus())
                     {
                         e = e.VisualParent as Control;
                     }

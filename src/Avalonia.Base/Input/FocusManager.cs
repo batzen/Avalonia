@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Avalonia.Input.Navigation;
 using Avalonia.Interactivity;
 using Avalonia.VisualTree;
 
@@ -181,13 +182,6 @@ namespace Avalonia.Input
         public static bool GetIsFocusScope(IInputElement e) => e is IFocusScope;
 
         /// <summary>
-        /// Checks if the specified element can be focused.
-        /// </summary>
-        /// <param name="e">The element.</param>
-        /// <returns>True if the element can be focused.</returns>
-        private static bool CanFocus(IInputElement e) => e.Focusable && e.IsEffectivelyEnabled && IsVisible(e);
-
-        /// <summary>
         /// Gets the focus scope ancestors of the specified control, traversing popups.
         /// </summary>
         /// <param name="control">The control.</param>
@@ -230,7 +224,7 @@ namespace Avalonia.Input
 
                 while (element != null)
                 {
-                    if (element is IInputElement inputElement && CanFocus(inputElement))
+                    if (element is IInputElement inputElement && inputElement.CanFocus())
                     {
                         Instance?.Focus(inputElement, NavigationMethod.Pointer, ev.KeyModifiers);
 
@@ -241,7 +235,5 @@ namespace Avalonia.Input
                 }
             }
         }
-
-        private static bool IsVisible(IInputElement e) => (e as Visual)?.IsVisible ?? true;
     }
 }

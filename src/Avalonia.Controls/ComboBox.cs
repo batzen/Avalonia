@@ -6,6 +6,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Shapes;
 using Avalonia.Controls.Templates;
 using Avalonia.Input;
+using Avalonia.Input.Navigation;
 using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.Media;
@@ -407,7 +408,7 @@ namespace Avalonia.Controls
             }
         }
 
-        private bool CanFocus(Control control) => control.Focusable && control.IsEffectivelyEnabled && control.IsVisible;
+        private bool CanFocus(Control control) => control.CanFocus();
 
         private void UpdateSelectionBoxItem(object? item)
         {
